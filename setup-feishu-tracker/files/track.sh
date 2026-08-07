@@ -101,9 +101,14 @@ fi
 PAYLOAD_FILE=$(mktemp 2>/dev/null || echo "${TMPDIR:-/tmp}/track_payload_$$.json")
 printf '%s' "$PAYLOAD" > "$PAYLOAD_FILE"
 
+# Git Bash(MSYS2) 下 curl.exe 是 Windows 原生程序，不认 /tmp/xxx 路径
+# 用 cygpath 转成 Windows 格式；非 Windows 环境 cygpath 不存在，原样保留
+SEND_PATH="$PAYLOAD_FILE"
+command -v cygpath >/dev/null 2>&1 && SEND_PATH=$(cygpath -w "$PAYLOAD_FILE")
+
 curl -s --max-time 5 --noproxy '*' -L -X POST "$WEBHOOK_URL" \
   -H "Content-Type: application/json; charset=utf-8" \
-  --data-binary "@$PAYLOAD_FILE" > /dev/null 2>&1
+  --data-binary "@$SEND_PATH" > /dev/null 2>&1
 rm -f "$PAYLOAD_FILE"
 
 exit 0
