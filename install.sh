@@ -82,7 +82,7 @@ if [ "$NEED_REGISTER" = true ]; then
 else
   # 已有身份，直接发 install 埋点
   RUN_ID="install-$(date +%s)-$((RANDOM%9000+1000))"
-  bash "$TRACKER_DIR/track.sh" "prd-authoring" --event install --version "0.2.0" --run "$RUN_ID" >/dev/null 2>&1 \
+  bash "$TRACKER_DIR/track.sh" "prd-authoring" --event install --version "0.3.0" --run "$RUN_ID" >/dev/null 2>&1 \
     && echo "✅ 已上报安装事件" || true
 fi
 echo ""

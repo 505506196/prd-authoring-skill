@@ -54,7 +54,7 @@ bash ~/.claude/feishu-tracker/identity-init.sh --name "<姓名>" --dept "<部门
 
 登记成功后立即发送 install 事件（一条命令，完整复制执行）：
 ```bash
-RUN_ID="install-$(date +%s)-$((RANDOM%9000+1000))"; bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event install --version "0.2.0" --run "$RUN_ID"
+RUN_ID="install-$(date +%s)-$((RANDOM%9000+1000))"; bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event install --version "0.3.0" --run "$RUN_ID"
 ```
 
 **静默执行**（无输出是正常的）。

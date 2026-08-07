@@ -1,8 +1,8 @@
 ---
 name: prd-authoring
-description: PRD 输出（PRD Authoring）。从需求（或需求诊断产物）出发，经七阶段流水线产出可交付的 PRD：概要需求文档 → 可交互原型（遵循组件库）→ 详细PRD草稿 → 三审三校（用户自审 + 业务视角评审 + 研发需求评审）→ 汇总用户决策 → 最终详细PRD+最终原型。当用户说「输出PRD」「写需求文档」「做个原型」「把需求做成 PRD」「原型评审」「研发评审」，或诊断完成后想往下做时触发。原型严格遵循 web 组件库，不自造样式；评审用独立子代理，意见交用户决策。
+description: PRD 输出（PRD Authoring）。从需求（或需求诊断产物）出发，经七阶段流水线产出可交付的 PRD：概要需求文档 → 可交互原型（遵循组件库）→ 用户自审 → 详细PRD草稿 → 三审三校（业务视角评审 + 研发需求评审）→ 汇总用户决策 → 最终详细PRD+最终原型。当用户说「输出PRD」「写需求文档」「做个原型」「把需求做成 PRD」「原型评审」「研发评审」，或诊断完成后想往下做时触发。原型遵循 web 组件库视觉规范，功能组件可用 Element Plus；评审用独立子代理，意见交用户决策。
 author: qiming
-version: 0.2.0
+version: 0.3.0
 updated: 2026-08-06
 ---
 
@@ -27,7 +27,7 @@ updated: 2026-08-06
    b. 询问部门
    c. 强制环节：未完成登记不执行正文
    d. `bash ~/.claude/feishu-tracker/identity-init.sh --name "<姓名>" --dept "<部门>"`
-3. 上报开始：`bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event start --version "0.2.0" --run "<run-id字面值>"`
+3. 上报开始：`bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event start --version "0.3.0" --run "<run-id字面值>"`
 4. 正文中遇到【埋点】指令行同样以该 run-id 上报；**正文执行完毕时上报 finish**（见进度协议第5条）。
 5. 所有埋点失败不重试、不向用户报错、不阻塞正文执行。
 <!-- feishu-tracker:end -->
@@ -40,7 +40,7 @@ updated: 2026-08-06
 
 ## 核心原则（三条铁律，违反即错）
 
-1. **原型必须遵循组件库**：阶段2生成的原型，严禁自造按钮/表单/表格/弹窗样式，严禁硬编码主色/圆角/阴影。必须引用 `~/.claude/prd-authoring-assets/web组件库/dist/shekao-ui.css+js`，用组件库的 class 和 `data-*`。生成前必读组件库的 `AI-USAGE.md`、`CLAUDE.md`（视觉红线）。违反即返工。
+1. **原型必须遵循组件库+可用Element Plus能力**：阶段2生成的原型，视觉样式严格遵循 `~/.claude/prd-authoring-assets/web组件库/`（主色#155CCB、Primary红线等视觉规范），但组件功能可引入 Element Plus（日期选择器、级联选择、树选择、复杂表单等），通过CSS覆盖适配团队主色。必读组件库的 `AI-USAGE.md`、`CLAUDE.md`（视觉红线）。违反即返工。
 2. **评审用独立子代理 + 意见交用户决策**：阶段5业务视角评审、阶段6研发需求评审，都用**独立 subagent**执行（不受主对话设计意图污染）。三审所有意见**必须汇总交用户决策**，由用户制定修改意见，**AI 禁止自行修改**原型/PRD。用户全部确认后，阶段7才动手改。
 3. **最终交付必须回填三审**：阶段7的最终详细PRD要逐条吸收三审（用户自审+业务评审+研发评审）的每条意见，每条标注「已采纳/暂缓/不采纳+原因」+用户裁决 R-编号。禁止把评审结论丢在一边另写PRD。
 
@@ -56,9 +56,9 @@ updated: 2026-08-06
    - **「已完成」且用户提新需求/变更** → 读 `references/变更协议.md`，只从落点向下游重跑。
 4. 读 `references/<当前阶段>.md`（只读当前这一个），照它执行。
 5. 阶段做完：产物落盘 → 更新进度 → **发一条「阶段完成」埋点** → 停在闸口。**一次回复只推进一个阶段。**
-   > 【埋点·阶段完成】阶段 1~6 每完成一个各发一条（阶段7走下方 finish）；`<阶段标识>` 取 `1`~`6`：`bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event stage-<阶段标识> --version "0.2.0" --run "<run-id字面值>"`
+   > 【埋点·阶段完成】阶段 1~6 每完成一个各发一条（阶段7走下方 finish）；`<阶段标识>` 取 `1`~`6`：`bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event stage-<阶段标识> --version "0.3.0" --run "<run-id字面值>"`
 6. **finish 埋点只在整条流程真正结束时上报一次**：中途各阶段停在闸口**不是** finish。仅当推进的是**阶段7（最终详细PRD+最终原型交付、进度更新为「已完成」）**时上报唯一一次：
-   > 【埋点】`bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event finish --version "0.2.0" --run "<run-id字面值>"`
+   > 【埋点】`bash ~/.claude/feishu-tracker/track.sh "prd-authoring" --event finish --version "0.3.0" --run "<run-id字面值>"`
 
 `outputs/<产品名>/00-进度.md` 模板：
 
@@ -74,11 +74,11 @@ updated: 2026-08-06
 |---|---|---|
 | 1 概要PRD | 01-概要PRD.md | 未开始 |
 | 2 原型（草稿） | prototype/ | 未开始 |
-| 3 详细PRD草稿 | 02-详细PRD草稿.md | 未开始 |
-| 4 一审·用户自审 | 03-用户自审意见.md | 未开始 |
-| 5 二审·业务视角评审 | 04-业务视角评审.md | 未开始 |
-| 6 三审·研发需求评审 | 05-研发评审.md | 未开始 |
-| 7 汇总决策+最终交付 | 06-三审汇总与裁决.md + 07-最终详细PRD.md + 最终 prototype/ | 未开始 |
+| 3 一审·用户自审 | 03-用户自审意见.md | 未开始 |
+| 4 详细PRD草稿 | 04-详细PRD草稿.md | 未开始 |
+| 5 二审·业务视角评审 | 05-业务视角评审.md | 未开始 |
+| 6 三审·研发需求评审 | 06-研发评审.md | 未开始 |
+| 7 汇总决策+最终交付 | 07-三审汇总与裁决.md + 08-最终详细PRD.md + 最终 prototype/ | 未开始 |
 ## 确认记录
 | 编号 | 日期 | 用户裁决内容 |
 |---|---|---|
@@ -91,11 +91,11 @@ updated: 2026-08-06
 |---|---|---|---|
 | 1 | 概要需求文档 | 01-概要PRD.md（业务流程+功能模块+用户场景） | references/阶段1-概要PRD.md |
 | 2 | 原型生成（草稿） | prototype/*.html + index.html（遵循组件库） | references/阶段2-原型生成.md |
-| 3 | 详细PRD草稿 | 02-详细PRD草稿.md | references/阶段3-详细PRD草稿.md |
-| 4 | 一审·用户自审 | 03-用户自审意见.md | references/阶段4-用户自审.md |
-| 5 | 二审·业务视角评审 | 04-业务视角评审.md（独立 subagent） | references/阶段5-业务视角评审.md |
-| 6 | 三审·研发需求评审 | 05-研发评审.md（独立 subagent） | references/阶段6-研发评审.md |
-| 7 | 汇总决策+最终交付 | 06-三审汇总与裁决.md + 07-最终详细PRD.md + 最终 prototype/ | references/阶段7-汇总决策与交付.md |
+| 3 | 一审·用户自审 | 03-用户自审意见.md | references/阶段3-用户自审.md |
+| 4 | 详细PRD草稿 | 04-详细PRD草稿.md | references/阶段4-详细PRD草稿.md |
+| 5 | 二审·业务视角评审 | 05-业务视角评审.md（独立 subagent） | references/阶段5-业务视角评审.md |
+| 6 | 三审·研发需求评审 | 06-研发评审.md（独立 subagent） | references/阶段6-研发评审.md |
+| 7 | 汇总决策+最终交付 | 07-三审汇总与裁决.md + 08-最终详细PRD.md + 最终 prototype/ | references/阶段7-汇总决策与交付.md |
 
 ## 全局纪律
 
