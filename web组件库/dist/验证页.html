@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dist 冒烟验证页 · AI组件库_社考</title>
+<link rel="stylesheet" href="shekao-ui.css">
+<style>
+/* 验证页自身布局（非组件样式） */
+.vp-main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 80px; }
+.vp-block { background: #fff; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; margin-bottom: 20px; }
+.vp-block h2 { font: var(--font-h3); color: var(--text-900); margin: 0 0 16px; }
+.vp-row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+.vp-row:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-logo"><svg width="20" height="20" aria-hidden="true"><use href="#i-panel"/></svg></div>
+    <div class="topbar-title">dist 冒烟验证页 <em>shekao-ui</em></div>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-actions">
+    <span class="topbar-avatar"><span class="topbar-avatar-dot">验</span><span class="topbar-avatar-name">验证员</span></span>
+  </div>
+</header>
+
+<main class="vp-main" style="padding-top: calc(var(--layout-topbar-h) + 24px);">
+
+  <div class="vp-block">
+    <h2>Button / Tag / Badge</h2>
+    <div class="vp-row">
+      <button class="btn btn--primary">主按钮</button>
+      <button class="btn btn--outline">描边</button>
+      <button class="btn btn--secondary">次级</button>
+      <button class="btn btn--danger">危险</button>
+      <button class="btn btn--text">文字</button>
+      <button class="btn btn--primary btn--sm">小按钮</button>
+      <button class="btn btn--cta">CTA 按钮 <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+    </div>
+    <div class="vp-row">
+      <span class="tag tag--primary">主色</span>
+      <span class="tag tag--success">成功</span>
+      <span class="tag tag--warning">警告</span>
+      <span class="tag tag--danger">错误</span>
+      <span class="tag tag--neutral">中性</span>
+      <span class="badge-pill badge-pill--running">进行中</span>
+      <span class="badge-pill badge-pill--pending">未开始</span>
+      <span class="badge-pill badge-pill--done">已结束</span>
+    </div>
+  </div>
+
+  <div class="vp-block">
+    <h2>Form：Field / Input / Select / Checkbox / Radio / Switch</h2>
+    <div class="vp-row" style="align-items: flex-start;">
+      <div class="field" style="width: 260px;">
+        <label class="field-label">任务名称<span class="req">*</span></label>
+        <div class="input"><input type="text" placeholder="请输入任务名称"></div>
+        <div class="field-help">不超过 30 个字</div>
+      </div>
+      <div class="field" style="width: 260px;">
+        <label class="field-label">及格线<span class="req">*</span></label>
+        <div class="input is-error"><input type="text" value="-5"></div>
+        <div class="field-error">及格线不能为负数</div>
+      </div>
+      <div class="field" style="width: 220px;">
+        <label class="field-label">学员角色</label>
+        <div class="select" data-select="single">
+          <div class="select-trigger">
+            <span class="select-trigger-value is-placeholder">请选择角色</span>
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow-d"/></svg>
+          </div>
+          <div class="select-panel">
+            <div class="select-option" data-value="技术支持">技术支持 <svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></div>
+            <div class="select-option" data-value="主监考">主监考 <svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></div>
+            <div class="select-option" data-value="监考员">监考员 <svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vp-row">
+      <label class="cb"><input type="checkbox" checked><span class="cb-box"></span><span>视频</span></label>
+      <label class="cb"><input type="checkbox"><span class="cb-box"></span><span>场景</span></label>
+      <label class="rd"><input type="radio" name="vr" checked><span class="rd-circle"></span><span>必修</span></label>
+      <label class="rd"><input type="radio" name="vr"><span class="rd-circle"></span><span>选修</span></label>
+      <label class="sw"><input type="checkbox" checked><span class="sw-track"></span><span class="sw-thumb"></span></label>
+      <div class="search" style="width: 240px;">
+        <span class="search-prefix"><svg width="16" height="16" aria-hidden="true"><use href="#i-search"/></svg></span>
+        <input class="search-input" type="text" placeholder="搜索姓名 / 手机号">
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-block">
+    <h2>Tabs / Steps</h2>
+    <div class="vp-row">
+      <div class="tabs-line" data-tabs="line">
+        <div class="tabs-line-item is-active">全部</div>
+        <div class="tabs-line-item">已发布</div>
+        <div class="tabs-line-item">草稿</div>
+        <div class="tabs-line-item">已停用</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="steps-item is-done">
+        <div class="steps-node"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></div>
+        <div class="steps-title">基本信息</div><div class="steps-desc">已完成</div>
+      </div>
+      <div class="steps-item is-current">
+        <div class="steps-node">2</div>
+        <div class="steps-title">环节编排</div><div class="steps-desc">进行中</div>
+      </div>
+      <div class="steps-item">
+        <div class="steps-node">3</div>
+        <div class="steps-title">分配对象</div><div class="steps-desc">未开始</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-block">
+    <h2>Table / Pagination</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr>
+          <th class="th-cb"><label class="cb"><input type="checkbox"><span class="cb-box"></span></label></th>
+          <th>任务名称</th><th>状态</th><th class="th-num">完成率</th><th class="th-actions">操作</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-cb"><label class="cb"><input type="checkbox"><span class="cb-box"></span></label></td>
+            <td>监考员岗前培训</td>
+            <td><span class="tag tag--sm tag--success">已发布</span></td>
+            <td class="td-num">86%</td>
+            <td class="td-actions">
+              <button class="btn btn--text">详情</button>
+              <span class="pop-host">
+                <button class="btn btn--text">停用</button>
+                <div class="pop">
+                  <div class="pop-row">
+                    <span class="pop-icon is-warn"><svg width="20" height="20" aria-hidden="true"><use href="#i-warn"/></svg></span>
+                    <div>
+                      <div class="pop-title">确认停用该任务？</div>
+                      <div class="pop-desc">停用后学员端不再下发，已产生进度保留</div>
+                    </div>
+                  </div>
+                  <div class="pop-actions">
+                    <button class="btn btn--outline btn--sm" data-pop-cancel>取消</button>
+                    <button class="btn btn--danger btn--sm" data-pop-confirm onclick="SK.message('success','任务已停用')">停用</button>
+                  </div>
+                </div>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-cb"><label class="cb"><input type="checkbox"><span class="cb-box"></span></label></td>
+            <td>技术支持设备实操</td>
+            <td><span class="tag tag--sm tag--neutral">草稿</span></td>
+            <td class="td-num">--</td>
+            <td class="td-actions"><button class="btn btn--text">编辑</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="vp-row" style="justify-content: space-between; margin-top: 12px;">
+      <span class="pg-stat">共 2 条</span>
+      <div class="pg">
+        <button class="pg-btn" disabled><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow-l"/></svg></button>
+        <button class="pg-btn is-active">1</button>
+        <button class="pg-btn"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-block">
+    <h2>Tree / Alert / Empty / Skeleton</h2>
+    <div class="vp-row" style="align-items: flex-start;">
+      <div class="tree" style="width: 220px;">
+        <div class="tree-node is-open">
+          <div class="tree-row">
+            <span class="tree-arrow"><svg width="12" height="12" aria-hidden="true"><use href="#i-arrow-r"/></svg></span>
+            <span>广东省</span>
+          </div>
+        </div>
+        <div class="tree-children" style="display:flex;">
+          <div class="tree-node is-selected"><div class="tree-row"><span class="tree-leaf-dot"></span><span>深圳区域</span></div></div>
+          <div class="tree-node"><div class="tree-row"><span class="tree-leaf-dot"></span><span>广州区域</span></div></div>
+        </div>
+      </div>
+      <div style="flex: 1; min-width: 320px;">
+        <div class="alert alert--warning" style="margin-bottom: 12px;">
+          <span class="alert-icon"><svg width="18" height="18" aria-hidden="true"><use href="#i-warn"/></svg></span>
+          <div class="alert-body"><div class="alert-title">3 名学员缺少底库照片</div><div class="alert-desc">缺少照片的学员将无法通过人脸核身进入学习</div></div>
+          <span class="alert-close"><svg width="14" height="14" aria-hidden="true"><use href="#i-close"/></svg></span>
+        </div>
+        <div class="empty empty--sm" style="border: 1px dashed var(--border); border-radius: var(--r-md); margin-bottom: 12px;">
+          <div class="empty-illus empty-illus--folder"></div>
+          <div class="empty-title">还没有学习任务</div>
+          <div class="empty-desc">发布第一个任务后，学员即可开始学习</div>
+          <div class="empty-actions"><button class="btn btn--primary btn--sm">新建任务</button></div>
+        </div>
+        <div class="vp-row">
+          <span class="skeleton skeleton--avatar"></span>
+          <span class="skeleton skeleton--line" style="width: 200px;"></span>
+          <span class="skeleton skeleton--btn"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-block">
+    <h2>交互 API：Dialog / Drawer / Message / Upload</h2>
+    <div class="vp-row">
+      <button class="btn btn--primary" data-dialog-open="#vpDialog">打开 Dialog</button>
+      <button class="btn btn--outline" data-drawer-open="#vpDrawer">打开 Drawer</button>
+      <button class="btn btn--outline" onclick="SK.message('success','操作成功')">success 消息</button>
+      <button class="btn btn--outline" onclick="SK.message('error','导入失败：第 3 行手机号重复')">error 消息</button>
+      <button class="btn btn--outline" onclick="SK.message('warning','该组织下还有 12 名学员')">warning 消息</button>
+    </div>
+    <div class="upload-drag" style="max-width: 420px;">
+      <div class="upload-drag-icon"><svg width="28" height="28" aria-hidden="true"><use href="#i-cloud-up"/></svg></div>
+      <div class="upload-drag-title">点击或拖拽文件到此处上传</div>
+      <div class="upload-drag-desc">支持 MP4（H.264），单个不超过 2GB</div>
+    </div>
+  </div>
+
+</main>
+
+<div class="dialog-overlay" id="vpDialog">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <div class="dialog-titles"><div class="dialog-title">验证弹窗</div></div>
+      <span class="dialog-close"><svg width="16" height="16" aria-hidden="true"><use href="#i-close"/></svg></span>
+    </div>
+    <div class="dialog-body">点击遮罩、关闭按钮或 Esc 均可关闭。</div>
+    <div class="dialog-footer">
+      <button class="btn btn--outline" data-dialog-close>取消</button>
+      <button class="btn btn--primary" data-dialog-close onclick="SK.message('success','已确认')">确认</button>
+    </div>
+  </div>
+</div>
+
+<div class="drawer-overlay" id="vpDrawer">
+  <div class="drawer">
+    <div class="drawer-header">
+      <div class="drawer-title">验证抽屉</div>
+      <span class="drawer-close"><svg width="16" height="16" aria-hidden="true"><use href="#i-close"/></svg></span>
+    </div>
+    <div class="drawer-body">
+      <div class="field">
+        <label class="field-label">姓名<span class="req">*</span></label>
+        <div class="input"><input type="text" placeholder="请输入姓名"></div>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn btn--outline" data-drawer-close>取消</button>
+      <button class="btn btn--primary" data-drawer-close onclick="SK.message('success','已保存')">保存</button>
+    </div>
+  </div>
+</div>
+
+<script src="shekao-ui.js"></script>
+</body>
+</html>

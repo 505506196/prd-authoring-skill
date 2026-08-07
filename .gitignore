@@ -1,0 +1,4 @@
+.DS_Store
+*.log
+setup-feishu-tracker/files/identity.json
+setup-feishu-tracker/files/config.json

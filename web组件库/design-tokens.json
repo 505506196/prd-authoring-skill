@@ -1,0 +1,184 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "meta": {
+    "name": "智能评卷 AI 组件库 · 社考风格",
+    "version": "2.0.0",
+    "theme": "new-style",
+    "updated": "2026-07-15",
+    "note": "采用 DTCG 的 $type/$value 分层形式；业务项目应优先消费 semantic，primitives 仅用于组件库维护。"
+  },
+  "color": {
+    "$type": "color",
+    "primitive": {
+      "primary": {
+        "50": { "$value": "#EEF4FF" },
+        "100": { "$value": "#DCE9FF" },
+        "200": { "$value": "#BAD3FE" },
+        "300": { "$value": "#85B2FC" },
+        "400": { "$value": "#4A8AEF" },
+        "500": { "$value": "#1E6AE0" },
+        "600": { "$value": "#155CCB" },
+        "700": { "$value": "#1050B8" },
+        "800": { "$value": "#0D3F80" },
+        "900": { "$value": "#0A2F66" },
+        "950": { "$value": "#061A3A" }
+      },
+      "success": {
+        "50": { "$value": "#ECFCF3" },
+        "100": { "$value": "#D2F8E5" },
+        "200": { "$value": "#A5F0CA" },
+        "300": { "$value": "#6DE0A9" },
+        "400": { "$value": "#36C884" },
+        "500": { "$value": "#09B766" },
+        "600": { "$value": "#089A57" },
+        "700": { "$value": "#077C46" },
+        "800": { "$value": "#066137" },
+        "900": { "$value": "#054B2B" },
+        "950": { "$value": "#022A18" }
+      },
+      "warning": {
+        "50": { "$value": "#FFFBEB" },
+        "100": { "$value": "#FEF3C7" },
+        "200": { "$value": "#FDE68A" },
+        "300": { "$value": "#FCD34D" },
+        "400": { "$value": "#FBBF24" },
+        "500": { "$value": "#F59E0B" },
+        "600": { "$value": "#D97706" },
+        "700": { "$value": "#B45309" },
+        "800": { "$value": "#92400E" },
+        "900": { "$value": "#78350F" },
+        "950": { "$value": "#451A03" }
+      },
+      "danger": {
+        "50": { "$value": "#FEF2F0" },
+        "100": { "$value": "#FEE3DF" },
+        "200": { "$value": "#FCC4BC" },
+        "300": { "$value": "#F89589" },
+        "400": { "$value": "#F46858" },
+        "500": { "$value": "#EA4335" },
+        "600": { "$value": "#D03224" },
+        "700": { "$value": "#AE2519" },
+        "800": { "$value": "#8E1D13" },
+        "900": { "$value": "#741810" },
+        "950": { "$value": "#3E0B07" }
+      },
+      "neutral": {
+        "50": { "$value": "#F8FAFC" },
+        "100": { "$value": "#F1F5F9" },
+        "200": { "$value": "#E2E8F0" },
+        "300": { "$value": "#CBD5E1" },
+        "400": { "$value": "#94A3B8" },
+        "500": { "$value": "#64748B" },
+        "600": { "$value": "#475569" },
+        "700": { "$value": "#334155" },
+        "800": { "$value": "#1E293B" },
+        "900": { "$value": "#0F172A" },
+        "950": { "$value": "#020617" },
+        "white": { "$value": "#FFFFFF" }
+      }
+    },
+    "semantic": {
+      "primary": {
+        "default": { "$value": "{color.primitive.primary.600}" },
+        "hover": { "$value": "{color.primitive.primary.500}" },
+        "active": { "$value": "{color.primitive.primary.700}" },
+        "disabled": { "$value": "{color.primitive.primary.300}" },
+        "background": { "$value": "{color.primitive.primary.50}" },
+        "border": { "$value": "{color.primitive.primary.200}" }
+      },
+      "success": {
+        "default": { "$value": "{color.primitive.success.500}" },
+        "solid": { "$value": "{color.primitive.success.700}" },
+        "text": { "$value": "{color.primitive.success.700}" },
+        "background": { "$value": "{color.primitive.success.100}" },
+        "border": { "$value": "{color.primitive.success.200}" }
+      },
+      "warning": {
+        "default": { "$value": "{color.primitive.warning.500}" },
+        "solid": { "$value": "{color.primitive.warning.800}" },
+        "text": { "$value": "{color.primitive.warning.800}" },
+        "background": { "$value": "{color.primitive.warning.100}" },
+        "border": { "$value": "{color.primitive.warning.200}" }
+      },
+      "danger": {
+        "default": { "$value": "{color.primitive.danger.500}" },
+        "hover": { "$value": "{color.primitive.danger.400}" },
+        "active": { "$value": "{color.primitive.danger.600}" },
+        "solid": { "$value": "{color.primitive.danger.600}" },
+        "text": { "$value": "{color.primitive.danger.700}" },
+        "background": { "$value": "{color.primitive.danger.100}" },
+        "border": { "$value": "{color.primitive.danger.200}" }
+      },
+      "text": {
+        "heading": { "$value": "{color.primitive.neutral.900}" },
+        "body": { "$value": "{color.primitive.neutral.700}" },
+        "secondary": { "$value": "{color.primitive.neutral.500}" },
+        "disabled": { "$value": "{color.primitive.neutral.400}" },
+        "inverse": { "$value": "{color.primitive.neutral.white}" }
+      },
+      "surface": {
+        "page": { "$value": "{color.primitive.neutral.50}" },
+        "default": { "$value": "{color.primitive.neutral.white}" },
+        "muted": { "$value": "{color.primitive.neutral.100}" },
+        "hover": { "$value": "{color.primitive.neutral.100}" },
+        "active": { "$value": "{color.primitive.neutral.200}" }
+      },
+      "border": {
+        "default": { "$value": "{color.primitive.neutral.200}" },
+        "strong": { "$value": "{color.primitive.neutral.300}" },
+        "selection": { "$value": "{color.primitive.neutral.400}" }
+      }
+    }
+  },
+  "dimension": {
+    "$type": "dimension",
+    "spacing": {
+      "xxs": { "$value": { "value": 4, "unit": "px" } },
+      "xs": { "$value": { "value": 8, "unit": "px" } },
+      "sm": { "$value": { "value": 12, "unit": "px" } },
+      "md": { "$value": { "value": 16, "unit": "px" } },
+      "lg": { "$value": { "value": 20, "unit": "px" } },
+      "xl": { "$value": { "value": 24, "unit": "px" } },
+      "2xl": { "$value": { "value": 32, "unit": "px" } },
+      "3xl": { "$value": { "value": 40, "unit": "px" } },
+      "4xl": { "$value": { "value": 56, "unit": "px" } },
+      "5xl": { "$value": { "value": 72, "unit": "px" } }
+    },
+    "radius": {
+      "xs": { "$value": { "value": 2, "unit": "px" } },
+      "sm": { "$value": { "value": 4, "unit": "px" } },
+      "control": { "$value": { "value": 6, "unit": "px" } },
+      "md": { "$value": { "value": 8, "unit": "px" } },
+      "lg": { "$value": { "value": 12, "unit": "px" } },
+      "xl": { "$value": { "value": 16, "unit": "px" } },
+      "pill": { "$value": { "value": 999, "unit": "px" } }
+    },
+    "layout": {
+      "topbarHeight": { "$value": { "value": 64, "unit": "px" } },
+      "sidebarWidth": { "$value": { "value": 240, "unit": "px" } },
+      "sidebarCollapsedWidth": { "$value": { "value": 64, "unit": "px" } },
+      "contentPaddingAdmin": { "$value": { "value": 24, "unit": "px" } },
+      "contentPaddingPortal": { "$value": { "value": 32, "unit": "px" } },
+      "contentMaxWidth": { "$value": { "value": 1400, "unit": "px" } }
+    }
+  },
+  "fontFamily": {
+    "$type": "fontFamily",
+    "sans": { "$value": ["PingFang SC", "-apple-system", "HarmonyOS Sans", "Microsoft YaHei", "Noto Sans SC", "Arial", "sans-serif"] },
+    "mono": { "$value": ["SF Mono", "Menlo", "Consolas", "JetBrains Mono", "monospace"] }
+  },
+  "fontWeight": {
+    "$type": "fontWeight",
+    "regular": { "$value": 400 },
+    "medium": { "$value": 500 },
+    "semibold": { "$value": 600 },
+    "bold": { "$value": 700 },
+    "extrabold": { "$value": 800 }
+  },
+  "duration": {
+    "$type": "duration",
+    "fast": { "$value": { "value": 150, "unit": "ms" } },
+    "normal": { "$value": { "value": 200, "unit": "ms" } },
+    "slow": { "$value": { "value": 300, "unit": "ms" } }
+  }
+}
